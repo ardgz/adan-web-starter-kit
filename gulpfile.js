@@ -1,25 +1,24 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 var cleanCSS = require('gulp-clean-css');
 var exec = require('child_process').exec;
-
-var path = require('path');
-// var webpack = require('webpack');
 
 gulp.task('webpack', function(cb) {
   exec('npm run webpack', function(err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
-  })
+  });
 });
 
 gulp.task('sass', function () {
   return gulp.src('./src/scss/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
@@ -51,4 +50,5 @@ gulp.task('production', ['sass:minify'])
 gulp.task('default', ['sass', 'webpack', 'browser-sync'], function() {
   gulp.watch('./src/scss/**/*', ['sass']);
   gulp.watch('./src/js/**/*', ['webpack']);
+  gulp.watch(['./public/**/*', './public/*']).on('change', reload);
 })
