@@ -11,8 +11,9 @@ class Layout extends Component {
 
   render() {
     return(
-      <div className="home">
-        <h3>Testing</h3>
+      <div>
+        <h1>Home</h1>
+        <h3>Starter Kit Homepage</h3>
       </div>
     )  
   }
@@ -21,5 +22,3 @@ class Layout extends Component {
 const app = document.getElementById('app');
 
 ReactDOM.render(<Layout />, app);
-
-console.log('testingaa');
