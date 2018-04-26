@@ -18,7 +18,9 @@ Currently still making changes to have a more polished base version. Further cha
 ## Setup
 1. Run `npm install` inside root directory of project to install included packages
 2. Run `npm update` inside root directory of project to update installed packages
-3. Run `gulp` inside project root in command line to run local live server. Saving changes to files while server is running will automatically reload web pages. If configuration files are changed, then the live server must be restarted.
+
+## Run Live Server
+Run `npm run watch` inside project root in command line to run local live server. Saving changes to files while server is running will automatically reload web pages. If configuration files are changed, then the live server must be restarted.
 
 ## License
 Starter Kit is MIT licensed.
